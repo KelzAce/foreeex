@@ -11,8 +11,14 @@ import { SharedModule } from '@app/shared';
       envFilePath: './.env',
     }),
 
-    SharedModule.registerRmq('AUTH_SERVICE', process.env.RABBITMQ_AUTH_QUEUE),
-    SharedModule.registerRmq('WALLET_SERVICE', process.env.RABBITMQ_WALLET_QUEUE)
+    SharedModule.registerRmq(
+      'AUTH_SERVICE', 
+      process.env.RABBITMQ_AUTH_QUEUE, 
+    ),
+    SharedModule.registerRmq(
+      'WALLET_SERVICE', 
+      process.env.RABBITMQ_WALLET_QUEUE, 
+    )
   ],
   controllers: [AppController],
   providers: [AppService],

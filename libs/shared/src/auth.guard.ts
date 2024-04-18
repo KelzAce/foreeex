@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 
 @Injectable()
-export class SharedService {
+export class AuthGuard {
 
     hasJwt() {
         return { jwt: 'token'};
