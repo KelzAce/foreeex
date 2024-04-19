@@ -21,7 +21,7 @@ export class AppController {
   }
 
   @UseGuards(AuthGuard)  
-  @Get('wallet')
+  @Get('wallet/get')
   async getWallet() {
     return this.walletService.send(
       {
@@ -30,6 +30,9 @@ export class AppController {
       {},
     );
   }
+
+  // @UseGuards(AuthGuard)
+  
 
   @Post('auth/register')
   async register(

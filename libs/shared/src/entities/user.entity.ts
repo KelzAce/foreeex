@@ -1,6 +1,7 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm"
+import { Wallet } from "apps/wallet/src/entities/wallet.entity"
+import {Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn} from "typeorm"
 
-@Entity('user')
+@Entity('users')
 export class UserEntity {
     @PrimaryGeneratedColumn()
     id: number
@@ -13,4 +14,11 @@ export class UserEntity {
 
     @Column()
     email: string
+
+    @Column()
+    password: string
+
+    @OneToOne(() => Wallet, wallet => wallet.user, { cascade: true })
+    @JoinColumn()
+    wallet: Wallet;
 }

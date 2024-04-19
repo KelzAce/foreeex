@@ -13,9 +13,13 @@ export class WalletController {
 
   
   @MessagePattern({ cmd: 'get-wallet' })
-  async getUsers(@Ctx() context: RmqContext) {
+  async getWalletBalance(@Ctx() context: RmqContext) {
     this.sharedService.acknowledgeMessage(context)
 
-    return this.walletService.getWallet()
+    return this.walletService.getWalletBalance()
   }
+
+  // @MessagePattern({cmd: 'create-wallet'})
+  // async create
+
 }
