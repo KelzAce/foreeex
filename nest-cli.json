@@ -45,6 +45,24 @@
       "compilerOptions": {
         "tsConfigPath": "apps/wallet/tsconfig.app.json"
       }
+    },
+    "transaction": {
+      "type": "application",
+      "root": "apps/transaction",
+      "entryFile": "main",
+      "sourceRoot": "apps/transaction/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/transaction/tsconfig.app.json"
+      }
+    },
+    "rate": {
+      "type": "application",
+      "root": "apps/rate",
+      "entryFile": "main",
+      "sourceRoot": "apps/rate/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/rate/tsconfig.app.json"
+      }
     }
   }
 }
