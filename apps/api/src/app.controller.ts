@@ -31,9 +31,6 @@ export class AppController {
     );
   }
 
-  // @UseGuards(AuthGuard)
-  
-
   @Post('auth/register')
   async register(
     @Body('firstName') firstName: string,
