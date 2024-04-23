@@ -40,6 +40,32 @@ services:
       - /usr/src/app/node_modules
     command: npm run start:dev wallet #overrides CMD from dockerfile
   
+  rate:
+    build: 
+      context: ./
+      dockerfile: ./apps/rate/Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app #any change to base folder should be reflected
+      - /usr/src/app/node_modules
+    command: npm run start:dev rate #overrides CMD from dockerfile
+  
+  transaction:
+    build: 
+      context: ./
+      dockerfile: ./apps/transaction/Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app #any change to base folder should be reflected
+      - /usr/src/app/node_modules
+    command: npm run start:dev transaction #overrides CMD from dockerfile
+
   api:
     build: 
       context: ./

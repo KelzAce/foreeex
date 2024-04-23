@@ -11,6 +11,7 @@ export class SharedService {
         const PASSWORD = this.configService.get('RABBITMQ_PASS');
         const HOST = this.configService.get('RABBITMQ_HOST');
         const QUEUE = this.configService.get('RABBITMQ_AUTH_QUEUE');
+        
 
         return{
             transport: Transport.RMQ,

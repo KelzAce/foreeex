@@ -1,6 +1,8 @@
 import { AuthGuard } from '@app/shared';
 import { Body, Controller, Get, Inject, Post, UseGuards } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
+import { registerUserDto } from '../dto/register.dto';
+import { loginUserDto } from '../dto/login.dto';
 
 @Controller()
 export class AppController {
@@ -10,17 +12,6 @@ export class AppController {
     @Inject('TRANSACTION_SERVICE') private transactionService: ClientProxy,
     @Inject('RATE_SERVICE') private readonly rateService: ClientProxy
   ) {}
-
-
-  // @Get('auth')
-  // async getUsers() {
-  //   return this.authService.send(
-  //     {
-  //       cmd: 'get-users',
-  //     },
-  //     {},
-  //   );
-  // }
 
   @UseGuards(AuthGuard)  
   @Get('wallet/createWallet')
@@ -54,8 +45,7 @@ export class AppController {
       {},
     );
   }
-
-  @UseGuards(AuthGuard)  
+  
   @Get('rate/getRate')
   async getRate() {
     return this.rateService.send(
@@ -67,39 +57,25 @@ export class AppController {
   }
 
   @Post('auth/register')
-  async register(
-    @Body('firstName') firstName: string,
-    @Body('lastName') lastName: string,
-    @Body('email') email: string,
-    @Body('password') password: string
-
-  ) {
+  async register(user: registerUserDto) {
     return this.authService.send(
       {
         cmd: 'register',
       },
       {
-        firstName,
-        lastName,
-        email,
-        password
+       user
       },
     );
   }
 
   @Post('auth/login')
-  async login(
-    @Body('email') email: string,
-    @Body('password') password: string
-
-  ) {
+  async login(user: loginUserDto) {
     return this.authService.send(
       {
         cmd: 'login',
       },
       {
-        email,
-        password,
+       user
       },
     );
   }

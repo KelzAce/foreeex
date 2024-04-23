@@ -17,8 +17,8 @@ export class WalletService {
 
     const user = this.userRepository.find()
 
-    if(!user) => {
-      throw new NotFoundException(`user with ${id}`)
+    if(!user) {
+      throw new NotFoundException(`user with ${user}`)
     }
 
     const wallet = this.walletRepository.create(createWalletDto);
@@ -28,8 +28,8 @@ export class WalletService {
     return wallet;
   }
 
-  async getBalance(id): Promise<Wallet> {
-    const wallet = await this.walletRepository.findOneBy(id);
+  async getBalance(id: string): Promise<Wallet> {
+    const wallet = await this.walletRepository.findOneBy({ id });
 
     return wallet
   }
