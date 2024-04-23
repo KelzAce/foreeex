@@ -28,8 +28,8 @@ export class WalletService {
     return wallet;
   }
 
-  async getBalance(id: string): Promise<Wallet> {
-    const wallet = await this.walletRepository.findOneBy({ id });
+  async getBalance(id: string): Promise<any> {
+    const wallet = await this.walletRepository.findOneBy({ id: 'id' });
 
     return wallet
   }

@@ -15,10 +15,10 @@ export class WalletController {
 
   
   @MessagePattern({ cmd: 'getBalance' })
-  async getBalance(@Ctx() context: RmqContext) {
+  async getBalance(@Ctx() context: RmqContext): Promise<any> {
     this.sharedService.acknowledgeMessage(context)
 
-    return this.walletService.getBalance({})
+    return this.walletService.getBalance('id')
   }
 
   @MessagePattern({ cmd: 'createWallet' })

@@ -14,6 +14,8 @@ import { SharedModule } from '@app/shared';
 
     SharedModule,
     SharedModule.registerRmq('RATE_SERVICE', process.env.RABBIT_RATE_QUEUE),
+
+    // TypeOrmModule.forFeature([ Rate ]),
   ],
   controllers: [RateController],
   providers: [RateService],

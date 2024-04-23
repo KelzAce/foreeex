@@ -6,6 +6,7 @@ import { SharedModule, PostgresDBModule } from '@app/shared';
 import { UserEntity } from '@app/shared';
 import { WalletController } from './wallet.controller';
 import { WalletService } from './wallet.service';
+import { Wallet } from './entities/wallet.entity';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { WalletService } from './wallet.service';
     PostgresDBModule,
 
 
-    TypeOrmModule.forFeature([ UserEntity ]),
+    TypeOrmModule.forFeature([ Wallet ]),
   ],
   controllers: [WalletController],
   providers: [WalletService],
