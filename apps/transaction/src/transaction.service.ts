@@ -13,13 +13,12 @@ export class TransactionService {
     private readonly userRepository: Repository<UserEntity>
   ){}
 
-  async transactionHistory(): Promise<Transaction> {
+  async transactionHistory(): Promise<any> {
     const transaction = this.transactionRepository.find()
 
     if(!transaction) {
       throw new NotFoundException('you do not have any transaction')
     }
-
-    
+    return transaction
   }
 }
