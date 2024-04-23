@@ -9,6 +9,8 @@ export class RateService {
 
     const response = await axios.get(`https://api.exchangerate-api.com/v4/latest/${baseCurrency}`);
 
+    console.log(response.data)
+
     return response.data;
   }
 }
