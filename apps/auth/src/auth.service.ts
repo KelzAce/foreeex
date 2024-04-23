@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 
-import { UserEntity } from './user.entity';
+import { UserEntity } from '@app/shared/entities/user.entity';
 import { NewUserDto } from './dtos/new-user.dto';
 import { ExistingUserDto } from './dtos/existing-user.dto';
 import { JwtService } from '@nestjs/jwt';
@@ -19,6 +19,10 @@ export class AuthService {
 
   async getUsers() {
     return this.userRepository.find();
+  }
+
+  async getUserById(id) {
+    return this.userRepository.findOneBy(id)
   }
 
   async findByEmail(email: string): Promise<UserEntity> {

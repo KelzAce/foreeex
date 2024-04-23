@@ -18,9 +18,16 @@ import { SharedModule } from '@app/shared';
     SharedModule.registerRmq(
       'WALLET_SERVICE', 
       process.env.RABBITMQ_WALLET_QUEUE, 
+    ),
+    SharedModule.registerRmq(
+      'RATE_SERVICE', 
+      process.env.RABBITMQ_RATE_QUEUE, 
+    ),
+    SharedModule.registerRmq(
+      'TRANSACTION_SERVICE', 
+      process.env.RABBITMQ_WALLET_QUEUE, 
     )
   ],
   controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

@@ -1,5 +1,6 @@
 import { Wallet } from "apps/wallet/src/entities/wallet.entity"
-import {Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn} from "typeorm"
+import {Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn} from "typeorm"
+import { Transaction } from "./transaction.entity"
 
 @Entity('users')
 export class UserEntity {
@@ -21,4 +22,8 @@ export class UserEntity {
     @OneToOne(() => Wallet, wallet => wallet.user, { cascade: true })
     @JoinColumn()
     wallet: Wallet;
+
+    @OneToMany(() => Transaction, transaction => transaction.user, { cascade: true})
+    @JoinColumn()
+    transaction: Transaction
 }

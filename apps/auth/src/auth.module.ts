@@ -6,7 +6,6 @@ import { SharedModule, PostgresDBModule } from '@app/shared';
 
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-// import { UserEntity } from '../../../libs/shared/src/entities/user.entity';
 import { UserEntity } from '@app/shared';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtGuard } from './jwt.guard';

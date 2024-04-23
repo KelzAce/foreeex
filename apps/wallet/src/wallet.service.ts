@@ -1,22 +1,36 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { Wallet } from './entities/wallet.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { UserEntity } from '@app/shared';
+import { CreateWalletDto } from './dto/create-wallet.dto';
 
 @Injectable()
 export class WalletService {
-  getWalletBalance(): string {
-  //   try {
-  //     const findWallet = await this.walletRepository.findOne({
-  //       where: { users: {id: user.id}}
-  //     });
+  constructor(
+    @InjectRepository(Wallet)
+    private readonly walletRepository: Repository<Wallet>,
+    private readonly userRepository: Repository<UserEntity>
+  ){}
 
-  //     if(!findWallet){
-  //       throw new NotFoundException("Account not found")
-  //     }
+  async createWallet(createWalletDto: CreateWalletDto): Promise<Wallet> {
 
-  //     return findWallet.balance
-  //   } catch (error) {
-  //     throw error
-  //   }
+    const user = this.userRepository.find()
 
-  return "Hi"
+    if(!user) => {
+      throw new NotFoundException(`user with ${id}`)
+    }
+
+    const wallet = this.walletRepository.create(createWalletDto);
+
+    await this.walletRepository.save(wallet);
+
+    return wallet;
+  }
+
+  async getBalance(id): Promise<Wallet> {
+    const wallet = await this.walletRepository.findOneBy(id);
+
+    return wallet
   }
 }

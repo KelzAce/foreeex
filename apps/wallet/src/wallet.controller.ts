@@ -1,7 +1,9 @@
 import { Controller } from '@nestjs/common';
 import { WalletService } from './wallet.service';
-import { Ctx, MessagePattern, RmqContext } from '@nestjs/microservices';
+import { Ctx, MessagePattern, Payload, RmqContext } from '@nestjs/microservices';
 import { SharedService } from '@app/shared';
+import { Wallet } from './entities/wallet.entity';
+import { CreateWalletDto } from './dto/create-wallet.dto';
 
 
 @Controller()
@@ -12,14 +14,19 @@ export class WalletController {
   ) {}
 
   
-  @MessagePattern({ cmd: 'get-wallet' })
-  async getWalletBalance(@Ctx() context: RmqContext) {
+  @MessagePattern({ cmd: 'getBalance' })
+  async getBalance(@Ctx() context: RmqContext) {
     this.sharedService.acknowledgeMessage(context)
 
-    return this.walletService.getWalletBalance()
+    return this.walletService.getBalance({})
   }
 
-  // @MessagePattern({cmd: 'create-wallet'})
-  // async create
+  @MessagePattern({ cmd: 'createWallet' })
+  async createWallet(@Ctx() context: RmqContext, 
+  @Payload() newWallet: CreateWalletDto
+): Promise<Wallet> {
+    this.sharedService.acknowledgeMessage(context)
 
+    return this.walletService.createWallet(newWallet)
+  };
 }

@@ -1,8 +1,25 @@
-import { Injectable } from '@nestjs/common';
+import { UserEntity } from '@app/shared';
+import { Transaction } from '@app/shared/entities/transaction.entity';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class TransactionService {
-  getHello(): string {
-    return 'Hello World!';
+
+  constructor(
+    @InjectRepository(Transaction)
+    private readonly transactionRepository: Repository<Transaction>,
+    private readonly userRepository: Repository<UserEntity>
+  ){}
+
+  async transactionHistory(): Promise<Transaction> {
+    const transaction = this.transactionRepository.find()
+
+    if(!transaction) {
+      throw new NotFoundException('you do not have any transaction')
+    }
+
+    
   }
 }

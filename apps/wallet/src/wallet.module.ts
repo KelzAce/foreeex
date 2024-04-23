@@ -1,9 +1,11 @@
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { SharedModule, PostgresDBModule } from '@app/shared';
+import { UserEntity } from '@app/shared';
 import { WalletController } from './wallet.controller';
 import { WalletService } from './wallet.service';
-import { ConfigModule } from '@nestjs/config';
-import { SharedModule } from '@app/shared';
-
 
 @Module({
   imports: [
@@ -11,10 +13,16 @@ import { SharedModule } from '@app/shared';
       isGlobal: true,
       envFilePath: './.env',
     }),
+
     SharedModule,
-    // SharedModule.registerRmq('AUTH_SERVICE', process.env.RABBIT_AUTH_QUEUE)
+    SharedModule.registerRmq('WALLET_SERVICE', process.env.RABBIT_WALLET_QUEUE),
+    PostgresDBModule,
+
+
+    TypeOrmModule.forFeature([ UserEntity ]),
   ],
   controllers: [WalletController],
   providers: [WalletService],
 })
 export class WalletModule {}
+

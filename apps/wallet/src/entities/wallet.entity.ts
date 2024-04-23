@@ -1,5 +1,6 @@
+import { Transaction } from "@app/shared/entities/transaction.entity";
 import { UserEntity } from "../../../../libs/shared/src/entities/user.entity"
-import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('wallets')
 export class Wallet {
@@ -21,4 +22,7 @@ export class Wallet {
   @OneToOne(() => UserEntity, user => user.wallet)
   @JoinColumn()
   user: UserEntity;
+
+  @OneToMany(() => Transaction, transaction => transaction.wallet)
+  transaction: Transaction;
 }
