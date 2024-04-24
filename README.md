@@ -41,7 +41,7 @@
 ![Javascript][javascript]
 ![Node.js][node]
 ![Nest.js][nest]
-![MongoDB][mongodb]
+![Docker][docker]
 
 </div>
 
@@ -431,4 +431,5 @@ This project was made possible by:
 [javascript]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1C
 [node]: https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
 [Nest]: https://img.shields.io/badge/nest.js-%23404d59.svg?style=for-the-badge&logo=nest&logoColor=%2361DAFB
+[Docker]: https://img.shields.io/badge/docker.io-%23404d59.svg?style=for-the-badge&logo=nest&logoColor=%2361DAFB
 [Postgres]: https://img.shields.io/badge/POSTGRESQL-%234ea94b.svg?style=for-the-badge&logo=posgresdb&logoColor=white
