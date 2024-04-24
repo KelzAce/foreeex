@@ -231,7 +231,7 @@ yarn run test
 
 ### Creating a user
 
-- Route: /auth/register
+- Route: api//auth/register
 - Method: POST
 
 :point_down: Body
@@ -267,7 +267,7 @@ yarn run test
 
 ### Logging in
 
-- Route: auth/login
+- Route: api/auth/login
 - Method: POST
 
 :point_down: Body
@@ -295,7 +295,7 @@ yarn run test
 
 ### Create a Wallet
 
-- Route: wallet/createWallet
+- Route: api/wallet/createWallet
 - Method: POST
 - Header
   - Authorization: Bearer {token}
@@ -325,7 +325,7 @@ yarn run test
 
 ### Get Wallet
 
-- Route:  wallet/getBalance
+- Route:  api/wallet/getBalance
 - Method: GET
 - Header
   - Authorization: Bearer {token}
@@ -343,7 +343,7 @@ yarn run test
 ---
 
 #### Get Transaction
-- Route:   transaction/History
+- Route:   api/transaction/History
 - Method: GET
 - Header
   - Authorization: Bearer {token}
