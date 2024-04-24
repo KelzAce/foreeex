@@ -36,7 +36,7 @@ export class AppController {
   }
 
   @UseGuards(AuthGuard)  
-  @Get('transaction/transactionHistory')
+  @Get('transaction/History')
   async getTransactionHistory() {
     return this.transactionService.send(
       {
