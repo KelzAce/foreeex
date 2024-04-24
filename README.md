@@ -342,24 +342,17 @@ yarn run test
 
 ---
 
-### Get specific wallet
-
-- Route:   wallet/getBalance/:id
+#### Get Transaction
+- Route:   transaction/History
 - Method: GET
 - Header
   - Authorization: Bearer {token}
 
 :point_down: Response
 
-```json
-{
+- Query params:
+  - id
 
-}
-```
-
-<p align="right"><a href="#readme-top">back to top</a></p>
-
----
 
 ## Lessons Learned
 
