@@ -31,6 +31,6 @@ export class WalletService {
   async getBalance(id: string): Promise<any> {
     const wallet = await this.walletRepository.findOneBy({ id: 'id' });
 
-    return wallet
+    return wallet.balance
   }
 }

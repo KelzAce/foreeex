@@ -16,5 +16,4 @@ export class RateController {
 
     return this.rateService.getRate()
   }
-
 }
