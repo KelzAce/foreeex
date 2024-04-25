@@ -13,8 +13,16 @@ export class AppController {
     @Inject('RATE_SERVICE') private readonly rateService: ClientProxy
   ) {}
 
+  @Get('api/auth/getHello')
+  async getHello() {
+    return this.authService.send({
+      cmd: 'getHello',
+    }, {})
+  }
+
+
   @UseGuards(AuthGuard)  
-  @Get('wallet/createWallet')
+  @Get('api/wallet/createWallet')
   async getWallet() {
     return this.walletService.send(
       {
@@ -25,7 +33,7 @@ export class AppController {
   }
 
   @UseGuards(AuthGuard)  
-  @Get('wallet/getBalance')
+  @Get('api/wallet/getBalance')
   async checkWalletBalance() {
     return this.walletService.send(
       {
@@ -36,7 +44,7 @@ export class AppController {
   }
 
   @UseGuards(AuthGuard)  
-  @Get('transaction/History')
+  @Get('api/transaction/History')
   async getTransactionHistory() {
     return this.transactionService.send(
       {
@@ -46,7 +54,7 @@ export class AppController {
     );
   }
   
-  @Get('rate/getRate')
+  @Get('api/rate/getRate')
   async getRate() {
     return this.rateService.send(
       {
@@ -56,7 +64,7 @@ export class AppController {
     );
   }
 
-  @Post('auth/register')
+  @Post('api/auth/register')
   async register(user: registerUserDto) {
     return this.authService.send(
       {
@@ -68,7 +76,7 @@ export class AppController {
     );
   }
 
-  @Post('auth/login')
+  @Post('api/auth/login')
   async login(user: loginUserDto) {
     return this.authService.send(
       {

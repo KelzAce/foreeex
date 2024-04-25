@@ -17,6 +17,9 @@ export class AuthService {
     private readonly jwtService: JwtService
   ) {}
 
+  async getHello() {
+    return 'Hello World'
+  }
   async getUsers() {
     return this.userRepository.find();
   }
