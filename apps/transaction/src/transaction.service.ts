@@ -10,6 +10,7 @@ export class TransactionService {
   constructor(
     @InjectRepository(Transaction)
     private readonly transactionRepository: Repository<Transaction>,
+    @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>
   ){}
 

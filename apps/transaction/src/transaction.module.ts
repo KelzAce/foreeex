@@ -4,14 +4,13 @@ import { TransactionController } from './transaction.controller';
 import { TransactionService } from './transaction.service';
 
 import { ConfigModule } from '@nestjs/config';
-import { SharedModule } from '@app/shared';
+import { SharedModule, UserEntity } from '@app/shared';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Transaction } from '@app/shared/entities/transaction.entity';
+import { Transaction } from '@app/shared';
 
 
 @Module({
   imports: [
-
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: './.env',
@@ -20,7 +19,7 @@ import { Transaction } from '@app/shared/entities/transaction.entity';
     SharedModule,
     SharedModule.registerRmq('TRANSACTION_SERVICE', process.env.RABBIT_TRANSACTION_QUEUE),
 
-    TypeOrmModule.forFeature([Transaction])
+    TypeOrmModule.forFeature([Transaction, UserEntity])
   ],
   controllers: [TransactionController],
   providers: [TransactionService],

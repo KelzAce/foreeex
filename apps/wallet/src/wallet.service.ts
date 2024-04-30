@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Wallet } from './entities/wallet.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -10,7 +10,8 @@ export class WalletService {
   constructor(
     @InjectRepository(Wallet)
     private readonly walletRepository: Repository<Wallet>,
-    private readonly userRepository: Repository<UserEntity>
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>,
   ){}
 
   async createWallet(createWalletDto: CreateWalletDto): Promise<Wallet> {

@@ -25,7 +25,7 @@ import { SharedModule } from '@app/shared';
     ),
     SharedModule.registerRmq(
       'TRANSACTION_SERVICE', 
-      process.env.RABBITMQ_WALLET_QUEUE, 
+      process.env.RABBITMQ_TRANSACTION_QUEUE, 
     )
   ],
   controllers: [AppController],

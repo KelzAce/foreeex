@@ -20,7 +20,7 @@ import { Wallet } from './entities/wallet.entity';
     PostgresDBModule,
 
 
-    TypeOrmModule.forFeature([ Wallet ]),
+    TypeOrmModule.forFeature([ Wallet, UserEntity ]),
   ],
   controllers: [WalletController],
   providers: [WalletService],
